@@ -1,0 +1,6 @@
+﻿namespace UiPath.Shared.Localization
+{
+    internal class SharedResources : MaincraftRulez.Anonymizator.Activities.Design.Properties.Resources
+    {
+    }
+}
