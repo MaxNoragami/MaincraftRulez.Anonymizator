@@ -145,4 +145,160 @@
     <value>Common</value>
     <comment>category</comment>
   </data>
+  <data name="Authentication_Category" xml:space="preserve">
+    <value>Authentication</value>
+    <comment>category</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="Output_Category" xml:space="preserve">
+    <value>Output</value>
+    <comment>category</comment>
+  </data>
+  <data name="Options_Category" xml:space="preserve">
+    <value>Options</value>
+    <comment>category</comment>
+  </data>
+  <data name="ValidationScope_Error" xml:space="preserve">
+    <value>Cannot be used outside of a {0}.</value>
+    <comment>error message; {0} is a container activity (e.g. a scope)</comment>
+  </data>
+  <data name="ValidationValue_Error" xml:space="preserve">
+    <value>Please provide a value for {0}.</value>
+    <comment>error message; {0} is the name of a missing property</comment>
+  </data>
+  <data name="ValidationExclusiveProperties_Error" xml:space="preserve">
+    <value>Please provide a value either for {0} or {1}, but not both.</value>
+    <comment>error message; {0} &amp; {1} are mutually exclusive activities</comment>
+  </data>
+  <data name="ValidationOverloadGroup_Error" xml:space="preserve">
+    <value>Please provide values for both {0} and {1}.</value>
+    <comment>error message; {0} &amp; {1} are complementary properties</comment>
+  </data>
+  <data name="UseAnonymization_DisplayName" xml:space="preserve">
+    <value>Use Anonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="UseAnonymization_Description" xml:space="preserve">
+    <value>A scoped activity in which the anonymization activities can be used.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="UseAnonymization_Key_DisplayName" xml:space="preserve">
+    <value>Key</value>
+    <comment>property name</comment>
+  </data>
+  <data name="UseAnonymization_Key_Description" xml:space="preserve">
+    <value>The key is the secret cryptographic value that controls access to encrypted data, serving as the primary security element in the encryption process that must be securely managed, as its compromise would allow an attacker to decrypt all data encrypted with that key.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="UseAnonymization_Tweak_DisplayName" xml:space="preserve">
+    <value>Tweak</value>
+    <comment>property name</comment>
+  </data>
+  <data name="UseAnonymization_Tweak_Description" xml:space="preserve">
+    <value>A tweak is a non-secret parameter that adds variability to the encryption process, ensuring that identical data encrypted with the same key but different tweaks produces unique ciphertexts, effectively preventing pattern recognition in encrypted values while allowing for domain separation of different data types.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Authentication_Category" xml:space="preserve">
+    <value>Authentication</value>
+    <comment>category</comment>
+  </data>
+  <data name="Common_Category" xml:space="preserve">
+    <value>Common</value>
+    <comment>category</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="Output_Category" xml:space="preserve">
+    <value>Output</value>
+    <comment>category</comment>
+  </data>
+  <data name="Options_Category" xml:space="preserve">
+    <value>Options</value>
+    <comment>category</comment>
+  </data>
+  <data name="ValidationScope_Error" xml:space="preserve">
+    <value>Cannot be used outside of a {0}.</value>
+    <comment>error message; {0} is a container activity (e.g. a scope)</comment>
+  </data>
+  <data name="ValidationValue_Error" xml:space="preserve">
+    <value>Please provide a value for {0}.</value>
+    <comment>error message; {0} is the name of a missing property</comment>
+  </data>
+  <data name="ValidationExclusiveProperties_Error" xml:space="preserve">
+    <value>Please provide a value either for {0} or {1}, but not both.</value>
+    <comment>error message; {0} &amp; {1} are mutually exclusive activities</comment>
+  </data>
+  <data name="ValidationOverloadGroup_Error" xml:space="preserve">
+    <value>Please provide values for both {0} and {1}.</value>
+    <comment>error message; {0} &amp; {1} are complementary properties</comment>
+  </data>
+  <data name="TextAnonymization_DisplayName" xml:space="preserve">
+    <value>Text Anonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="TextAnonymization_Description" xml:space="preserve">
+    <value>Text Anonymization transforms readable text into an encrypted form while preserving its original format, structure, and character types, allowing sensitive information to be protected.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="TextAnonymization_OriginalText_DisplayName" xml:space="preserve">
+    <value>Original Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextAnonymization_OriginalText_Description" xml:space="preserve">
+    <value>The text before anonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="TextAnonymization_AnonymizedText_DisplayName" xml:space="preserve">
+    <value>Anonymized Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextAnonymization_AnonymizedText_Description" xml:space="preserve">
+    <value>The text after anonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Output_Category" xml:space="preserve">
+    <value>Output</value>
+    <comment>category</comment>
+  </data>
+  <data name="TextDeanonymization_DisplayName" xml:space="preserve">
+    <value>Text Deanonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="TextDeanonymization_Description" xml:space="preserve">
+    <value>Text Deanonymization reverses the anonymization process by transforming encrypted text back to its original readable form while preserving the format, structure, and character types that were maintained during anonymization, allowing sensitive information to be securely recovered when authorized.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="TextDeanonymization_AnonymizedText_DisplayName" xml:space="preserve">
+    <value>Anonymized Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextDeanonymization_AnonymizedText_Description" xml:space="preserve">
+    <value>The text before deanonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="TextDeanonymization_OriginalText_DisplayName" xml:space="preserve">
+    <value>Original Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextDeanonymization_OriginalText_Description" xml:space="preserve">
+    <value>The text after deanonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Output_Category" xml:space="preserve">
+    <value>Output</value>
+    <comment>category</comment>
+  </data>
 </root>
