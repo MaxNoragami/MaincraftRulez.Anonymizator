@@ -2,7 +2,6 @@ namespace MaincraftRulez.Anonymizator;
 
 public static class Constants
 {
-    public static object Constants { get; internal set; }
 
     // Alphabets for different data types
     public static class Alphabets

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using MaincraftRulez.Anonymizator.Activities.Properties;
 using UiPath.Shared.Activities;
 using UiPath.Shared.Activities.Localization;
+using System.Linq;
 
 namespace MaincraftRulez.Anonymizator.Activities
 {
@@ -50,7 +51,6 @@ namespace MaincraftRulez.Anonymizator.Activities
 
         #endregion
 
-
         #region Constructors
 
         public UseAnonymization(IObjectContainer objectContainer)
@@ -59,7 +59,7 @@ namespace MaincraftRulez.Anonymizator.Activities
 
             Body = new ActivityAction<IObjectContainer>
             {
-                Argument = new DelegateInArgument<IObjectContainer> (ParentContainerPropertyTag),
+                Argument = new DelegateInArgument<IObjectContainer>(ParentContainerPropertyTag),
                 Handler = new Sequence { DisplayName = Resources.Do }
             };
         }
@@ -71,7 +71,6 @@ namespace MaincraftRulez.Anonymizator.Activities
 
         #endregion
 
-
         #region Protected Methods
 
         protected override void CacheMetadata(NativeActivityMetadata metadata)
@@ -81,7 +80,7 @@ namespace MaincraftRulez.Anonymizator.Activities
             base.CacheMetadata(metadata);
         }
 
-        protected override async Task<Action<NativeActivityContext>> ExecuteAsync(NativeActivityContext  context, CancellationToken cancellationToken)
+        protected override async Task<Action<NativeActivityContext>> ExecuteAsync(NativeActivityContext context, CancellationToken cancellationToken)
         {
             // Inputs
             var timeout = TimeoutMS.Get(context);
@@ -89,28 +88,84 @@ namespace MaincraftRulez.Anonymizator.Activities
             var tweak = Tweak.Get(context);
 
             // Set a timeout on the execution
-            var task = ExecuteWithTimeout(context, cancellationToken);
+            var task = ExecuteWithTimeout(context, key, tweak, cancellationToken);
             if (await Task.WhenAny(task, Task.Delay(timeout, cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
             await task;
 
             return (ctx) => {
                 // Schedule child activities
+                ctx.Properties.Add(ParentContainerPropertyTag, _objectContainer);
+
                 if (Body != null)
-				    ctx.ScheduleAction<IObjectContainer>(Body, _objectContainer, OnCompleted, OnFaulted);
+                    ctx.ScheduleAction<IObjectContainer>(Body, _objectContainer, OnCompleted, OnFaulted);
 
                 // Outputs
             };
         }
 
-        private async Task ExecuteWithTimeout(NativeActivityContext context, CancellationToken cancellationToken = default)
+        private static IFF3Cipher _sharedCipher;
+
+        // Add a static method to access the cipher
+        public static IFF3Cipher GetCipher()
         {
-            ///////////////////////////
-            // Add execution logic HERE
-            ///////////////////////////
+            return _sharedCipher;
+        }
+
+        private async Task ExecuteWithTimeout(NativeActivityContext context, string key, string tweak, CancellationToken cancellationToken = default)
+        {
+            // Convert hex key to bytes
+            byte[] keyBytes = StringToByteArray(key);
+
+            // If tweak is provided, convert it to bytes, otherwise use default tweak (zeros)
+            byte[] tweakBytes = !string.IsNullOrEmpty(tweak)
+                ? StringToByteArray(tweak)
+                : new byte[7] { 0, 0, 0, 0, 0, 0, 0 }; // FF3-1 uses 7-byte tweak
+
+            // Create cipher with key and tweak
+            var cipher = new FF3Cipher(key, tweakBytes);
+
+            // Store in the static field for child activities to access
+            _sharedCipher = cipher;
+
+            // Also add to the container as before (for backward compatibility)
+            _objectContainer.Add<IFF3Cipher>(cipher);
+
+            await Task.CompletedTask;
+        }
+
+        // Add this to cleanup
+        protected override void Cancel(NativeActivityContext context)
+        {
+            base.Cancel(context);
+            _sharedCipher = null; // Clean up the shared cipher
+        }
+
+        private void OnCompleted(NativeActivityContext context, ActivityInstance completedInstance)
+        {
+            _sharedCipher = null; // Clean up the shared cipher
+            Cleanup();
+        }
+
+        private static byte[] StringToByteArray(string hex)
+        {
+            if (string.IsNullOrEmpty(hex))
+                return Array.Empty<byte>();
+
+            // Remove any spaces or hyphens
+            hex = hex.Replace(" ", "").Replace("-", "");
+
+            int len = hex.Length;
+            byte[] bytes = new byte[len / 2];
+
+            for (int i = 0; i < len; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            }
+
+            return bytes;
         }
 
         #endregion
-
 
         #region Events
 
@@ -120,16 +175,12 @@ namespace MaincraftRulez.Anonymizator.Activities
             Cleanup();
         }
 
-        private void OnCompleted(NativeActivityContext context, ActivityInstance completedInstance)
-        {
-            Cleanup();
-        }
+        
 
         #endregion
 
-
         #region Helpers
-        
+
         private void Cleanup()
         {
             var disposableObjects = _objectContainer.Where(o => o is IDisposable);
@@ -144,4 +195,3 @@ namespace MaincraftRulez.Anonymizator.Activities
         #endregion
     }
 }
-

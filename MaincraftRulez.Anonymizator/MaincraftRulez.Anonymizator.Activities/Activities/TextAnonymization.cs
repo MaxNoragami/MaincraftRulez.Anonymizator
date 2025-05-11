@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using MaincraftRulez.Anonymizator.Activities.Properties;
 using UiPath.Shared.Activities;
 using UiPath.Shared.Activities.Localization;
+using MaincraftRulez.Anonymizator;
+using UiPath.Shared.Activities.Utilities;
 
 namespace MaincraftRulez.Anonymizator.Activities
 {
@@ -39,7 +41,6 @@ namespace MaincraftRulez.Anonymizator.Activities
 
         #endregion
 
-
         #region Constructors
 
         public TextAnonymization()
@@ -48,12 +49,15 @@ namespace MaincraftRulez.Anonymizator.Activities
 
         #endregion
 
-
         #region Protected Methods
 
         protected override void CacheMetadata(CodeActivityMetadata metadata)
         {
             if (OriginalText == null) metadata.AddValidationError(string.Format(Resources.ValidationValue_Error, nameof(OriginalText)));
+
+            // Validate that this activity is used within a UseAnonymization scope
+            //metadata.AddValidationError(
+            //    string.Format(Resources.ValidationScope_Error, nameof(UseAnonymization)));
 
             base.CacheMetadata(metadata);
         }
@@ -63,25 +67,49 @@ namespace MaincraftRulez.Anonymizator.Activities
             // Inputs
             var timeout = TimeoutMS.Get(context);
             var originalText = OriginalText.Get(context);
+            string anonymizedText = string.Empty;
 
             // Set a timeout on the execution
-            var task = ExecuteWithTimeout(context, cancellationToken);
+            var task = ExecuteWithTimeout(context, originalText, cancellationToken);
             if (await Task.WhenAny(task, Task.Delay(timeout, cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
+            anonymizedText = await task;
 
             // Outputs
             return (ctx) => {
-                AnonymizedText.Set(ctx, null);
+                AnonymizedText.Set(ctx, anonymizedText);
             };
         }
 
-        private async Task ExecuteWithTimeout(AsyncCodeActivityContext context, CancellationToken cancellationToken = default)
+        private async Task<string> ExecuteWithTimeout(AsyncCodeActivityContext context, string originalText, CancellationToken cancellationToken = default)
         {
-            ///////////////////////////
-            // Add execution logic HERE
-            ///////////////////////////
+            try
+            {
+                // Get the cipher directly from the UseAnonymization class
+                var cipher = UseAnonymization.GetCipher();
+
+                if (cipher == null)
+                    throw new InvalidOperationException("This activity must be used within a UseAnonymization scope.");
+
+                // Create a string anonymizer using the cipher
+                var anonymizer = new StringAnonymizer(cipher);
+
+                // Customize settings as needed
+                anonymizer.SetPreserveCase(true);
+                anonymizer.SetPreserveSpaces(true);
+                anonymizer.SetPreservePunctuation(true);
+
+                // Anonymize the text
+                string anonymizedText = anonymizer.Anonymize(originalText);
+
+                return await Task.FromResult(anonymizedText);
+            }
+            catch (Exception ex)
+            {
+                // Add more informative error message to help troubleshoot
+                throw new InvalidOperationException("Error anonymizing text. Make sure this activity is used within a UseAnonymization scope and the key is valid.", ex);
+            }
         }
 
         #endregion
     }
 }
-

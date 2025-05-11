@@ -3,7 +3,6 @@ using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
-using FPE.Utilities;
 
 
 namespace MaincraftRulez.Anonymizator;
