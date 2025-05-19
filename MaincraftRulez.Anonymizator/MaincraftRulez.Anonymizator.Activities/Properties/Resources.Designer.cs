@@ -106,6 +106,60 @@ namespace MaincraftRulez.Anonymizator.Activities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secret key generator for anonymization.
+        /// </summary>
+        public static string GenerateSecretKey_Description {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate Secret Key.
+        /// </summary>
+        public static string GenerateSecretKey_DisplayName {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a variable to store the key.
+        /// </summary>
+        public static string GenerateSecretKey_GeneratedKey_Description {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_GeneratedKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generated key.
+        /// </summary>
+        public static string GenerateSecretKey_GeneratedKey_DisplayName {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_GeneratedKey_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose the type of key.
+        /// </summary>
+        public static string GenerateSecretKey_TypeOfKey_Description {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_TypeOfKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of key.
+        /// </summary>
+        public static string GenerateSecretKey_TypeOfKey_DisplayName {
+            get {
+                return ResourceManager.GetString("GenerateSecretKey_TypeOfKey_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input.
         /// </summary>
         public static string Input_Category {
@@ -129,6 +183,294 @@ namespace MaincraftRulez.Anonymizator.Activities.Properties {
         public static string Output_Category {
             get {
                 return ResourceManager.GetString("Output_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number after anonymization.
+        /// </summary>
+        public static string PhoneAnonymization_AnonymizedPhone_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_AnonymizedPhone_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anonymized Phone.
+        /// </summary>
+        public static string PhoneAnonymization_AnonymizedPhone_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_AnonymizedPhone_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number after anonymization.
+        /// </summary>
+        public static string PhoneAnonymization_AnonymizedPhoneNumber_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_AnonymizedPhoneNumber_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anonymized Phone Number.
+        /// </summary>
+        public static string PhoneAnonymization_AnonymizedPhoneNumber_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_AnonymizedPhoneNumber_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anonymize phone numbers with additional features..
+        /// </summary>
+        public static string PhoneAnonymization_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhoneAnonymization.
+        /// </summary>
+        public static string PhoneAnonymization_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number before anonymization.
+        /// </summary>
+        public static string PhoneAnonymization_OriginalPhone_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_OriginalPhone_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Phone.
+        /// </summary>
+        public static string PhoneAnonymization_OriginalPhone_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_OriginalPhone_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number before anonymization.
+        /// </summary>
+        public static string PhoneAnonymization_OriginalPhoneNumber_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_OriginalPhoneNumber_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Phone Number.
+        /// </summary>
+        public static string PhoneAnonymization_OriginalPhoneNumber_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_OriginalPhoneNumber_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option to make area codes to remain non-anonymized..
+        /// </summary>
+        public static string PhoneAnonymization_PreserveAreaCode_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveAreaCode_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Area Code.
+        /// </summary>
+        public static string PhoneAnonymization_PreserveAreaCode_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveAreaCode_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option to make country codes to remain non-anonymized..
+        /// </summary>
+        public static string PhoneAnonymization_PreserveCountryCode_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveCountryCode_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Country Code.
+        /// </summary>
+        public static string PhoneAnonymization_PreserveCountryCode_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveCountryCode_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the number of leading of digits to preserve.
+        /// </summary>
+        public static string PhoneAnonymization_PreserveLeadingDigits_Description {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveLeadingDigits_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Leading Digits.
+        /// </summary>
+        public static string PhoneAnonymization_PreserveLeadingDigits_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneAnonymization_PreserveLeadingDigits_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The anonymized phone number to restore.
+        /// </summary>
+        public static string PhoneDeanonymization_AnonymizedPhone_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_AnonymizedPhone_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anonymized Phone.
+        /// </summary>
+        public static string PhoneDeanonymization_AnonymizedPhone_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_AnonymizedPhone_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number before deanonymization.
+        /// </summary>
+        public static string PhoneDeanonymization_AnonymizedPhoneNumber_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_AnonymizedPhoneNumber_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anonymized Phone Number.
+        /// </summary>
+        public static string PhoneDeanonymization_AnonymizedPhoneNumber_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_AnonymizedPhoneNumber_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deanonymize phone numbers with additional features..
+        /// </summary>
+        public static string PhoneDeanonymization_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhoneDeanonymization.
+        /// </summary>
+        public static string PhoneDeanonymization_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The restored original phone number.
+        /// </summary>
+        public static string PhoneDeanonymization_OriginalPhone_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_OriginalPhone_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Phone.
+        /// </summary>
+        public static string PhoneDeanonymization_OriginalPhone_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_OriginalPhone_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number afterdeanonymization.
+        /// </summary>
+        public static string PhoneDeanonymization_OriginalPhoneNumber_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_OriginalPhoneNumber_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Phone Number.
+        /// </summary>
+        public static string PhoneDeanonymization_OriginalPhoneNumber_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_OriginalPhoneNumber_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option to not deanonymize area codes..
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveAreaCode_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveAreaCode_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Area Code.
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveAreaCode_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveAreaCode_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Option to not deanonymize country codes.
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveCountryCode_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveCountryCode_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Country Code.
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveCountryCode_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveCountryCode_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the number of leading of digits to not deanonymize.
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveLeadingDigits_Description {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveLeadingDigits_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve Leading Digits.
+        /// </summary>
+        public static string PhoneDeanonymization_PreserveLeadingDigits_DisplayName {
+            get {
+                return ResourceManager.GetString("PhoneDeanonymization_PreserveLeadingDigits_DisplayName", resourceCulture);
             }
         }
         

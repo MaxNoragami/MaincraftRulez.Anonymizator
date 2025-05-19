@@ -201,6 +201,174 @@
     <value>A tweak is a non-secret parameter that adds variability to the encryption process, ensuring that identical data encrypted with the same key but different tweaks produces unique ciphertexts, effectively preventing pattern recognition in encrypted values while allowing for domain separation of different data types.</value>
     <comment>property description</comment>
   </data>
+  <data name="TextAnonymization_DisplayName" xml:space="preserve">
+    <value>Text Anonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="TextAnonymization_Description" xml:space="preserve">
+    <value>Text Anonymization transforms readable text into an encrypted form while preserving its original format, structure, and character types, allowing sensitive information to be protected.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="TextAnonymization_OriginalText_DisplayName" xml:space="preserve">
+    <value>Original Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextAnonymization_OriginalText_Description" xml:space="preserve">
+    <value>The text before anonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="TextAnonymization_AnonymizedText_DisplayName" xml:space="preserve">
+    <value>Anonymized Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextAnonymization_AnonymizedText_Description" xml:space="preserve">
+    <value>The text after anonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="TextDeanonymization_DisplayName" xml:space="preserve">
+    <value>Text Deanonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="TextDeanonymization_Description" xml:space="preserve">
+    <value>Text Deanonymization reverses the anonymization process by transforming encrypted text back to its original readable form while preserving the format, structure, and character types that were maintained during anonymization, allowing sensitive information to be securely recovered when authorized.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="TextDeanonymization_AnonymizedText_DisplayName" xml:space="preserve">
+    <value>Anonymized Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextDeanonymization_AnonymizedText_Description" xml:space="preserve">
+    <value>The text before deanonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="TextDeanonymization_OriginalText_DisplayName" xml:space="preserve">
+    <value>Original Text</value>
+    <comment>property name</comment>
+  </data>
+  <data name="TextDeanonymization_OriginalText_Description" xml:space="preserve">
+    <value>The text after deanonymization.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateSecretKey_DisplayName" xml:space="preserve">
+    <value>Generate Secret Key</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="GenerateSecretKey_Description" xml:space="preserve">
+    <value>Secret key generator for anonymization</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="GenerateSecretKey_TypeOfKey_DisplayName" xml:space="preserve">
+    <value>Type of key</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateSecretKey_TypeOfKey_Description" xml:space="preserve">
+    <value>Choose the type of key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateSecretKey_GeneratedKey_DisplayName" xml:space="preserve">
+    <value>Generated key</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateSecretKey_GeneratedKey_Description" xml:space="preserve">
+    <value>Choose a variable to store the key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneAnonymization_DisplayName" xml:space="preserve">
+    <value>Phone Anonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="PhoneAnonymization_Description" xml:space="preserve">
+    <value>Anonymizes phone numbers while preserving selected parts like country code</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="PhoneAnonymization_OriginalPhone_DisplayName" xml:space="preserve">
+    <value>Original Phone</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_OriginalPhone_Description" xml:space="preserve">
+    <value>The phone number before anonymization</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneAnonymization_AnonymizedPhone_DisplayName" xml:space="preserve">
+    <value>Anonymized Phone</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_AnonymizedPhone_Description" xml:space="preserve">
+    <value>The phone number after anonymization</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveCountryCode_DisplayName" xml:space="preserve">
+    <value>Preserve Country Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveCountryCode_Description" xml:space="preserve">
+    <value>If true, preserves the country code (e.g. +1, +44) part of the phone number</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveAreaCode_DisplayName" xml:space="preserve">
+    <value>Preserve Area Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveAreaCode_Description" xml:space="preserve">
+    <value>If true, preserves the area code part of the phone number</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveLeadingDigits_DisplayName" xml:space="preserve">
+    <value>Preserve Leading Digits</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveLeadingDigits_Description" xml:space="preserve">
+    <value>Number of leading digits to preserve in the phone number (excluding country code and area code if those are preserved)</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneDeanonymization_DisplayName" xml:space="preserve">
+    <value>Phone Deanonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="PhoneDeanonymization_Description" xml:space="preserve">
+    <value>Deanonymizes phone numbers that were anonymized with Phone Anonymization</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="PhoneDeanonymization_AnonymizedPhone_DisplayName" xml:space="preserve">
+    <value>Anonymized Phone</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_AnonymizedPhone_Description" xml:space="preserve">
+    <value>The anonymized phone number to restore</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneDeanonymization_OriginalPhone_DisplayName" xml:space="preserve">
+    <value>Original Phone</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_OriginalPhone_Description" xml:space="preserve">
+    <value>The restored original phone number</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveCountryCode_DisplayName" xml:space="preserve">
+    <value>Preserve Country Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveCountryCode_Description" xml:space="preserve">
+    <value>Must match the setting used during anonymization</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveAreaCode_DisplayName" xml:space="preserve">
+    <value>Preserve Area Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveAreaCode_Description" xml:space="preserve">
+    <value>Must match the setting used during anonymization</value>
+    <comment>property description</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveLeadingDigits_DisplayName" xml:space="preserve">
+    <value>Preserve Leading Digits</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveLeadingDigits_Description" xml:space="preserve">
+    <value>Must match the setting used during anonymization</value>
+    <comment>property description</comment>
+  </data>
   <data name="Authentication_Category" xml:space="preserve">
     <value>Authentication</value>
     <comment>category</comment>
@@ -237,68 +405,140 @@
     <value>Please provide values for both {0} and {1}.</value>
     <comment>error message; {0} &amp; {1} are complementary properties</comment>
   </data>
-  <data name="TextAnonymization_DisplayName" xml:space="preserve">
-    <value>Text Anonymization</value>
+  <data name="PhoneAnonymization_DisplayName" xml:space="preserve">
+    <value>PhoneAnonymization</value>
     <comment>activity name</comment>
   </data>
-  <data name="TextAnonymization_Description" xml:space="preserve">
-    <value>Text Anonymization transforms readable text into an encrypted form while preserving its original format, structure, and character types, allowing sensitive information to be protected.</value>
+  <data name="PhoneAnonymization_Description" xml:space="preserve">
+    <value>Anonymize phone numbers with additional features.</value>
     <comment>activity description</comment>
   </data>
-  <data name="TextAnonymization_OriginalText_DisplayName" xml:space="preserve">
-    <value>Original Text</value>
+  <data name="PhoneAnonymization_OriginalPhoneNumber_DisplayName" xml:space="preserve">
+    <value>Original Phone Number</value>
     <comment>property name</comment>
   </data>
-  <data name="TextAnonymization_OriginalText_Description" xml:space="preserve">
-    <value>The text before anonymization.</value>
+  <data name="PhoneAnonymization_OriginalPhoneNumber_Description" xml:space="preserve">
+    <value>The phone number before anonymization</value>
     <comment>property description</comment>
   </data>
   <data name="Input_Category" xml:space="preserve">
     <value>Input</value>
     <comment>category</comment>
   </data>
-  <data name="TextAnonymization_AnonymizedText_DisplayName" xml:space="preserve">
-    <value>Anonymized Text</value>
+  <data name="PhoneAnonymization_AnonymizedPhoneNumber_DisplayName" xml:space="preserve">
+    <value>Anonymized Phone Number</value>
     <comment>property name</comment>
   </data>
-  <data name="TextAnonymization_AnonymizedText_Description" xml:space="preserve">
-    <value>The text after anonymization.</value>
+  <data name="PhoneAnonymization_AnonymizedPhoneNumber_Description" xml:space="preserve">
+    <value>The phone number after anonymization</value>
     <comment>property description</comment>
   </data>
   <data name="Output_Category" xml:space="preserve">
     <value>Output</value>
     <comment>category</comment>
   </data>
-  <data name="TextDeanonymization_DisplayName" xml:space="preserve">
-    <value>Text Deanonymization</value>
-    <comment>activity name</comment>
-  </data>
-  <data name="TextDeanonymization_Description" xml:space="preserve">
-    <value>Text Deanonymization reverses the anonymization process by transforming encrypted text back to its original readable form while preserving the format, structure, and character types that were maintained during anonymization, allowing sensitive information to be securely recovered when authorized.</value>
-    <comment>activity description</comment>
-  </data>
-  <data name="TextDeanonymization_AnonymizedText_DisplayName" xml:space="preserve">
-    <value>Anonymized Text</value>
+  <data name="PhoneAnonymization_PreserveCountryCode_DisplayName" xml:space="preserve">
+    <value>Preserve Country Code</value>
     <comment>property name</comment>
   </data>
-  <data name="TextDeanonymization_AnonymizedText_Description" xml:space="preserve">
-    <value>The text before deanonymization.</value>
+  <data name="PhoneAnonymization_PreserveCountryCode_Description" xml:space="preserve">
+    <value>Option to make country codes to remain non-anonymized.</value>
     <comment>property description</comment>
   </data>
   <data name="Input_Category" xml:space="preserve">
     <value>Input</value>
     <comment>category</comment>
   </data>
-  <data name="TextDeanonymization_OriginalText_DisplayName" xml:space="preserve">
-    <value>Original Text</value>
+  <data name="PhoneAnonymization_PreserveAreaCode_DisplayName" xml:space="preserve">
+    <value>Preserve Area Code</value>
     <comment>property name</comment>
   </data>
-  <data name="TextDeanonymization_OriginalText_Description" xml:space="preserve">
-    <value>The text after deanonymization.</value>
+  <data name="PhoneAnonymization_PreserveAreaCode_Description" xml:space="preserve">
+    <value>Option to make area codes to remain non-anonymized.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveLeadingDigits_DisplayName" xml:space="preserve">
+    <value>Preserve Leading Digits</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneAnonymization_PreserveLeadingDigits_Description" xml:space="preserve">
+    <value>Enter the number of leading of digits to preserve</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneDeanonymization_DisplayName" xml:space="preserve">
+    <value>PhoneDeanonymization</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="PhoneDeanonymization_Description" xml:space="preserve">
+    <value>Deanonymize phone numbers with additional features.</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="PhoneDeanonymization_AnonymizedPhoneNumber_DisplayName" xml:space="preserve">
+    <value>Anonymized Phone Number</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_AnonymizedPhoneNumber_Description" xml:space="preserve">
+    <value>The phone number before deanonymization</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneDeanonymization_OriginalPhoneNumber_DisplayName" xml:space="preserve">
+    <value>Original Phone Number</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_OriginalPhoneNumber_Description" xml:space="preserve">
+    <value>The phone number afterdeanonymization</value>
     <comment>property description</comment>
   </data>
   <data name="Output_Category" xml:space="preserve">
     <value>Output</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveCountryCode_DisplayName" xml:space="preserve">
+    <value>Preserve Country Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveCountryCode_Description" xml:space="preserve">
+    <value>Option to not deanonymize country codes</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveAreaCode_DisplayName" xml:space="preserve">
+    <value>Preserve Area Code</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveAreaCode_Description" xml:space="preserve">
+    <value>Option to not deanonymize area codes.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveLeadingDigits_DisplayName" xml:space="preserve">
+    <value>Preserve Leading Digits</value>
+    <comment>property name</comment>
+  </data>
+  <data name="PhoneDeanonymization_PreserveLeadingDigits_Description" xml:space="preserve">
+    <value>Enter the number of leading of digits to not deanonymize</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
     <comment>category</comment>
   </data>
 </root>

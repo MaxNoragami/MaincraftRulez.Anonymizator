@@ -32,9 +32,13 @@
     <PackageVersion>0.1.0</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Remove these None items -->
+    <!-- <None Remove="Designers\GenerateSecretKeyDesigner.xaml" />
     <None Remove="Designers\TextAnonymizationDesigner.xaml" />
     <None Remove="Designers\TextDeanonymizationDesigner.xaml" />
-    <None Remove="Designers\UseAnonymizationDesigner.xaml" />
+    <None Remove="Designers\PhoneAnonymizationDesigner.xaml" />
+    <None Remove="Designers\PhoneDeanonymizationDesigner.xaml" />
+    <None Remove="Designers\UseAnonymizationDesigner.xaml" /> -->
   </ItemGroup>
   <!-- Package Icon -->
   <ItemGroup>
@@ -65,21 +69,36 @@
   <ItemGroup>
     <Page Include="..\..\Shared\Themes\Generic.xaml">
       <Link>Themes\Generic.xaml</Link>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
+    <Page Include="Designers\GenerateSecretKeyDesigner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Designers\TextAnonymizationDesigner.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Designers\TextDeanonymizationDesigner.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Designers\PhoneAnonymizationDesigner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Designers\PhoneDeanonymizationDesigner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Designers\UseAnonymizationDesigner.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Icons.xaml">
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>

@@ -32,5 +32,36 @@
     <DrawingBrush x:Key="TextAnonymizationIcon" Drawing="{StaticResource icon5fe048abb9bc462e999997785d727b33_0}" />
     <DrawingBrush x:Key="TextDeanonymizationIcon" Drawing="{StaticResource icon5fe048abb9bc462e999997785d727b33_0}" />
 
+    <!--GenerateSecretKey Icon-->
+    <DrawingGroup x:Key="iconc4aa4b5dee9e4fe7afefb850f2622c92_0">
+      <DrawingGroup.ClipGeometry>
+        <RectangleGeometry Rect="0,0,800,800" />
+      </DrawingGroup.ClipGeometry>
+      <DrawingGroup Transform="0.1,0,0,-0.1,0,800">
+        <GeometryDrawing Brush="#FF000000">
+          <GeometryDrawing.Geometry>
+            <PathGeometry FillRule="Nonzero" Figures="M1850,5495L1850,4770 2570,4770 3290,4770 3290,4420 3290,4070 2935,4070 2580,4070 2580,2990 2580,1910 2935,1910 3290,1910 3290,2265 3290,2620 4010,2620 4730,2620 4730,2270 4730,1920 5100,1920 5470,1920 5470,2995 5470,4070 5110,4070 4750,4070 4750,4420 4750,4770 5470,4770 6190,4770 6190,5495 6190,6220 5465,6220 4740,6220 4740,5500 4740,4780 4020,4780 3300,4780 3300,5500 3300,6220 2575,6220 1850,6220 1850,5495z" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+    <DrawingBrush x:Key="GenerateSecretKeyIcon" Drawing="{StaticResource iconc4aa4b5dee9e4fe7afefb850f2622c92_0}" />
+
+    <!--PhoneAnonymization, PhoneDeanonymization Icon-->
+    <DrawingGroup x:Key="iconaac3d69efb7c4fa39cfa8389bdd81988_0">
+      <DrawingGroup.ClipGeometry>
+        <RectangleGeometry Rect="0,0,800,800" />
+      </DrawingGroup.ClipGeometry>
+      <DrawingGroup Transform="0.1,0,0,-0.1,0,800">
+        <GeometryDrawing Brush="#FF000000">
+          <GeometryDrawing.Geometry>
+            <PathGeometry FillRule="Nonzero" Figures="M1850,5495L1850,4770 2570,4770 3290,4770 3290,4420 3290,4070 2935,4070 2580,4070 2580,2990 2580,1910 2935,1910 3290,1910 3290,2265 3290,2620 4010,2620 4730,2620 4730,2270 4730,1920 5100,1920 5470,1920 5470,2995 5470,4070 5110,4070 4750,4070 4750,4420 4750,4770 5470,4770 6190,4770 6190,5495 6190,6220 5465,6220 4740,6220 4740,5500 4740,4780 4020,4780 3300,4780 3300,5500 3300,6220 2575,6220 1850,6220 1850,5495z" />
+          </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+      </DrawingGroup>
+    </DrawingGroup>
+    <DrawingBrush x:Key="PhoneAnonymizationIcon" Drawing="{StaticResource iconaac3d69efb7c4fa39cfa8389bdd81988_0}" />
+    <DrawingBrush x:Key="PhoneDeanonymizationIcon" Drawing="{StaticResource iconaac3d69efb7c4fa39cfa8389bdd81988_0}" />
+
 
 </ResourceDictionary>

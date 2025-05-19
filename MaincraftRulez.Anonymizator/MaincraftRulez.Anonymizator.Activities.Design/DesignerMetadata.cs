@@ -27,6 +27,18 @@ namespace MaincraftRulez.Anonymizator.Activities.Design
             builder.AddCustomAttributes(typeof(TextDeanonymization), new DesignerAttribute(typeof(TextDeanonymizationDesigner)));
             builder.AddCustomAttributes(typeof(TextDeanonymization), new HelpKeywordAttribute(""));
 
+            builder.AddCustomAttributes(typeof(GenerateSecretKey), categoryAttribute);
+            builder.AddCustomAttributes(typeof(GenerateSecretKey), new DesignerAttribute(typeof(GenerateSecretKeyDesigner)));
+            builder.AddCustomAttributes(typeof(GenerateSecretKey), new HelpKeywordAttribute(""));
+
+            builder.AddCustomAttributes(typeof(PhoneAnonymization), categoryAttribute);
+            builder.AddCustomAttributes(typeof(PhoneAnonymization), new DesignerAttribute(typeof(PhoneAnonymizationDesigner)));
+            builder.AddCustomAttributes(typeof(PhoneAnonymization), new HelpKeywordAttribute(""));
+
+            builder.AddCustomAttributes(typeof(PhoneDeanonymization), categoryAttribute);
+            builder.AddCustomAttributes(typeof(PhoneDeanonymization), new DesignerAttribute(typeof(PhoneDeanonymizationDesigner)));
+            builder.AddCustomAttributes(typeof(PhoneDeanonymization), new HelpKeywordAttribute(""));
+
 
             MetadataStore.AddAttributeTable(builder.CreateTable());
         }
