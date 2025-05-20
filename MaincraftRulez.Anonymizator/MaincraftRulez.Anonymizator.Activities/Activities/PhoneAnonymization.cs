@@ -42,11 +42,6 @@ namespace MaincraftRulez.Anonymizator.Activities
         [LocalizedCategory(nameof(Resources.Input_Category))]
         public InArgument<bool> PreserveCountryCode { get; set; }
 
-        [LocalizedDisplayName(nameof(Resources.PhoneAnonymization_PreserveAreaCode_DisplayName))]
-        [LocalizedDescription(nameof(Resources.PhoneAnonymization_PreserveAreaCode_Description))]
-        [LocalizedCategory(nameof(Resources.Input_Category))]
-        public InArgument<bool> PreserveAreaCode { get; set; }
-
         [LocalizedDisplayName(nameof(Resources.PhoneAnonymization_PreserveLeadingDigits_DisplayName))]
         [LocalizedDescription(nameof(Resources.PhoneAnonymization_PreserveLeadingDigits_Description))]
         [LocalizedCategory(nameof(Resources.Input_Category))]
@@ -79,12 +74,11 @@ namespace MaincraftRulez.Anonymizator.Activities
             var timeout = TimeoutMS.Get(context);
             var originalPhoneNumber = OriginalPhoneNumber.Get(context);
             var preserveCountryCode = PreserveCountryCode.Get(context);
-            var preserveAreaCode = PreserveAreaCode.Get(context);
             var preserveLeadingDigits = PreserveLeadingDigits.Get(context);
             string anonymizedPhoneNumber = string.Empty;
 
             // Set a timeout on the execution
-            var task = ExecuteWithTimeout(context, originalPhoneNumber, preserveCountryCode, preserveAreaCode, preserveLeadingDigits, cancellationToken);
+            var task = ExecuteWithTimeout(context, originalPhoneNumber, preserveCountryCode, preserveLeadingDigits, cancellationToken);
             if (await Task.WhenAny(task, Task.Delay(timeout, cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
             anonymizedPhoneNumber = await task;
 
@@ -94,7 +88,7 @@ namespace MaincraftRulez.Anonymizator.Activities
             };
         }
 
-        private async Task<string> ExecuteWithTimeout(AsyncCodeActivityContext context, string originalPhoneNumber, bool preserveCountryCode, bool preserveAreaCode, int preserveLeadingDigits, CancellationToken cancellationToken = default)
+        private async Task<string> ExecuteWithTimeout(AsyncCodeActivityContext context, string originalPhoneNumber, bool preserveCountryCode, int preserveLeadingDigits, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -109,7 +103,6 @@ namespace MaincraftRulez.Anonymizator.Activities
 
                 // Configure the anonymizer with activity properties
                 phoneAnonymizer.SetPreserveCountryCode(preserveCountryCode);
-                phoneAnonymizer.SetPreserveAreaCode(preserveAreaCode);
                 phoneAnonymizer.SetPreserveLeadingDigits(preserveLeadingDigits);
 
                 // Anonymize the phone number
