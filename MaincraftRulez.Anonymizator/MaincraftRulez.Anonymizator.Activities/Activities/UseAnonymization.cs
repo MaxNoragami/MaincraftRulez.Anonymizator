@@ -8,6 +8,8 @@ using MaincraftRulez.Anonymizator.Activities.Properties;
 using UiPath.Shared.Activities;
 using UiPath.Shared.Activities.Localization;
 using System.Linq;
+using System.Security;
+using System.Runtime.InteropServices;
 
 namespace MaincraftRulez.Anonymizator.Activities
 {
@@ -36,12 +38,12 @@ namespace MaincraftRulez.Anonymizator.Activities
         [LocalizedDisplayName(nameof(Resources.UseAnonymization_Key_DisplayName))]
         [LocalizedDescription(nameof(Resources.UseAnonymization_Key_Description))]
         [LocalizedCategory(nameof(Resources.Input_Category))]
-        public InArgument<string> Key { get; set; }
+        public InArgument<SecureString> Key { get; set; }
 
         [LocalizedDisplayName(nameof(Resources.UseAnonymization_Tweak_DisplayName))]
         [LocalizedDescription(nameof(Resources.UseAnonymization_Tweak_Description))]
         [LocalizedCategory(nameof(Resources.Input_Category))]
-        public InArgument<string> Tweak { get; set; }
+        public InArgument<SecureString> Tweak { get; set; }
 
         // A tag used to identify the scope in the activity context
         internal static string ParentContainerPropertyTag => "ScopeActivity";
@@ -84,11 +86,11 @@ namespace MaincraftRulez.Anonymizator.Activities
         {
             // Inputs
             var timeout = TimeoutMS.Get(context);
-            var key = Key.Get(context);
-            var tweak = Tweak.Get(context);
+            var secureKey = Key.Get(context);
+            var secureTweak = Tweak.Get(context);
 
             // Set a timeout on the execution
-            var task = ExecuteWithTimeout(context, key, tweak, cancellationToken);
+            var task = ExecuteWithTimeout(context, secureKey, secureTweak, cancellationToken);
             if (await Task.WhenAny(task, Task.Delay(timeout, cancellationToken)) != task) throw new TimeoutException(Resources.Timeout_Error);
             await task;
 
@@ -111,26 +113,61 @@ namespace MaincraftRulez.Anonymizator.Activities
             return _sharedCipher;
         }
 
-        private async Task ExecuteWithTimeout(NativeActivityContext context, string key, string tweak, CancellationToken cancellationToken = default)
+        private async Task ExecuteWithTimeout(NativeActivityContext context, SecureString secureKey, SecureString secureTweak, CancellationToken cancellationToken = default)
         {
-            // Convert hex key to bytes
-            byte[] keyBytes = StringToByteArray(key);
+            try {
+                // Convert SecureString key to regular string (within this method only)
+                string key = SecureStringToString(secureKey);
 
-            // If tweak is provided, convert it to bytes, otherwise use default tweak (zeros)
-            byte[] tweakBytes = !string.IsNullOrEmpty(tweak)
-                ? StringToByteArray(tweak)
-                : new byte[7] { 0, 0, 0, 0, 0, 0, 0 }; // FF3-1 uses 7-byte tweak
+                // Convert hex key to bytes
+                byte[] keyBytes = StringToByteArray(key);
 
-            // Create cipher with key and tweak
-            var cipher = new FF3Cipher(key, tweakBytes);
+                // If tweak is provided, convert it to bytes, otherwise use default tweak (zeros)
+                byte[] tweakBytes;
+                if (secureTweak != null && secureTweak.Length > 0)
+                {
+                    string tweak = SecureStringToString(secureTweak);
+                    tweakBytes = StringToByteArray(tweak);
+                }
+                else
+                {
+                    tweakBytes = new byte[7] { 0, 0, 0, 0, 0, 0, 0 }; // FF3-1 uses 7-byte tweak
+                }
 
-            // Store in the static field for child activities to access
-            _sharedCipher = cipher;
+                // Create cipher with key and tweak
+                var cipher = new FF3Cipher(key, tweakBytes);
 
-            // Also add to the container as before (for backward compatibility)
-            _objectContainer.Add<IFF3Cipher>(cipher);
+                // Store in the static field for child activities to access
+                _sharedCipher = cipher;
+
+                // Also add to the container as before (for backward compatibility)
+                _objectContainer.Add<IFF3Cipher>(cipher);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error initializing anonymization. Please ensure the key and tweak are valid hex strings.", ex);
+            }
 
             await Task.CompletedTask;
+        }
+
+        // Helper method to convert SecureString to string
+        private static string SecureStringToString(SecureString secureString)
+        {
+            if (secureString == null)
+                return null;
+
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                if (valuePtr != IntPtr.Zero)
+                    Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
         }
 
         // Add this to cleanup
